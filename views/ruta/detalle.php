@@ -49,27 +49,32 @@ use models\Usuario;
                         <?php endforeach; ?>
                     </div>
                 </div>
-                
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <h5 class="mb-0">Descripción</h5>
+                  <div class="card modern-card mb-4">
+                    <div class="card-header-modern">
+                        <h5 class="mb-0">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Descripción
+                        </h5>
                     </div>
                     <div class="card-body">
                         <p><?= nl2br(htmlspecialchars($ruta['descripcion'])) ?></p>
                     </div>
                 </div>
                 
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <h5 class="mb-0">Mapa de la Ruta</h5>
+                <div class="card modern-card mb-4">
+                    <div class="card-header-modern">
+                        <h5 class="mb-0">
+                            <i class="fas fa-map me-2"></i>
+                            Mapa de la Ruta
+                        </h5>
                     </div>
                     <div class="card-body">
                         <div id="map" style="height: 400px; width: 100%;"></div>
                         <div class="mt-3">
-                            <a href="#" class="btn btn-sm btn-outline-secondary mr-2">
+                            <a href="#" class="btn btn-sm btn-modern-secondary mr-2">
                                 <i class="fas fa-download"></i> Descargar GPX
                             </a>
-                            <a href="#" class="btn btn-sm btn-outline-secondary">
+                            <a href="#" class="btn btn-sm btn-modern-secondary">
                                 <i class="fas fa-download"></i> Descargar KML
                             </a>
                         </div>
@@ -77,18 +82,20 @@ use models\Usuario;
                 </div>
                 
                 <!-- Sección de valoraciones -->
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0">Valoraciones y Comentarios</h5>
+                <div class="card modern-card">
+                    <div class="card-header-modern">
+                        <h5 class="mb-0">
+                            <i class="fas fa-star me-2"></i>
+                            Valoraciones y Comentarios
+                        </h5>
                     </div>
-                    <div class="card-body">
-                        <?php if (isset($_SESSION['identity'])): ?>
+                    <div class="card-body">                        <?php if (isset($_SESSION['identity'])): ?>
                             <div class="mb-4">
                                 <h6>Deja tu valoración</h6>
-                                <form action="<?= BASE_URL ?>valoracion/guardar" method="POST">
+                                <form action="<?= BASE_URL ?>valoracion/guardar" method="POST" id="ratingForm">
                                     <input type="hidden" name="ruta_id" value="<?= $ruta['id'] ?>">
                                     
-                                    <div class="form-group">
+                                    <div class="form-group-modern">
                                         <label>Puntuación:</label>
                                         <div class="rating">
                                             <input type="radio" id="star5" name="valoracion" value="5" required>
@@ -104,12 +111,15 @@ use models\Usuario;
                                         </div>
                                     </div>
                                     
-                                    <div class="form-group">
+                                    <div class="form-group-modern">
                                         <label for="comentario">Comentario:</label>
-                                        <textarea class="form-control" id="comentario" name="comentario" rows="3"></textarea>
+                                        <textarea class="form-control form-control-modern" id="comentario" name="comentario" rows="3" 
+                                                  placeholder="Comparte tu experiencia con esta ruta..."></textarea>
                                     </div>
                                     
-                                    <button type="submit" class="btn btn-primary">Enviar valoración</button>
+                                    <button type="submit" class="btn btn-modern-primary">
+                                        <i class="fas fa-star mr-2"></i>Enviar valoración
+                                    </button>
                                 </form>
                             </div>
                         <?php else: ?>
@@ -259,3 +269,35 @@ use models\Usuario;
         color: #ffc107;
     }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Rating form validation
+    const ratingForm = document.getElementById('ratingForm');
+    
+    if (ratingForm) {
+        ratingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const valoracion = document.querySelector('input[name="valoracion"]:checked');
+            
+            if (!valoracion) {
+                showErrorAlert('Debes seleccionar una puntuación');
+                return;
+            }
+            
+            // Confirmar envío
+            const stars = '★'.repeat(valoracion.value) + '☆'.repeat(5 - valoracion.value);
+            confirmAction(
+                'Enviar Valoración',
+                `¿Estás seguro de que quieres enviar esta valoración?\n${stars} (${valoracion.value}/5)`,
+                'Sí, enviar',
+                () => {
+                    showLoadingAlert('Enviando valoración...');
+                    ratingForm.submit();
+                }
+            );
+        });
+    }
+});
+</script>

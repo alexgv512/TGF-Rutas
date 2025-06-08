@@ -46,11 +46,15 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+<!-- SweetAlert2 JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
+
 <!-- Leaflet JavaScript -->
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
 <!-- Scripts personalizados -->
 <script src="<?=BASE_URL?>assets/js/main.js"></script>
 <script src="<?=BASE_URL?>assets/js/maps.js"></script>
+<script src="<?=BASE_URL?>assets/js/sweetalert-config.js"></script>
 </body>
 </html>

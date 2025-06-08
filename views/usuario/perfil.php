@@ -4,19 +4,21 @@
 
 <div class="container mt-4">
     <?php if (isset($_SESSION['error'])): ?>
-        <div class="alert alert-danger alert-dismissible fade show">
-            <?= $_SESSION['error'] ?>
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <?php unset($_SESSION['error']); ?>
-        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                showErrorAlert('<?= addslashes($_SESSION['error']) ?>');
+            });
+        </script>
+        <?php unset($_SESSION['error']); ?>
     <?php endif; ?>
     
     <?php if (isset($_SESSION['success'])): ?>
-        <div class="alert alert-success alert-dismissible fade show">
-            <?= $_SESSION['success'] ?>
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <?php unset($_SESSION['success']); ?>
-        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                showSuccessAlert('<?= addslashes($_SESSION['success']) ?>');
+            });
+        </script>
+        <?php unset($_SESSION['success']); ?>
     <?php endif; ?>
     
     <?php if (isset($_SESSION['identity'])): ?>
@@ -25,12 +27,11 @@
                 <img src="<?= !empty($_SESSION['identity']['imagen']) ? BASE_URL . 'uploads/' . $_SESSION['identity']['imagen'] : BASE_URL . 'assets/img/user-default.png' ?>" 
                      alt="Foto de perfil" class="profile-avatar">
             </div>
-            <div class="col-md-9">
-                <h2><?= htmlspecialchars($_SESSION['identity']['nombre'] . ' ' . $_SESSION['identity']['apellidos']) ?></h2>
+            <div class="col-md-9">                <h2><?= htmlspecialchars($_SESSION['identity']['nombre'] . ' ' . $_SESSION['identity']['apellidos']) ?></h2>
                 <p class="text-muted">
                     <i class="fas fa-envelope mr-2"></i><?= htmlspecialchars($_SESSION['identity']['email']) ?>
                 </p>
-                <a href="<?= BASE_URL ?>usuario/editar" class="btn btn-outline-primary">
+                <a href="<?= BASE_URL ?>usuario/editar" class="btn btn-modern-secondary">
                     <i class="fas fa-edit mr-2"></i>Editar Perfil
                 </a>
             </div>
@@ -50,10 +51,9 @@
         </ul>
         
         <div class="tab-content" id="profileTabsContent">
-            <div class="tab-pane fade show active" id="rutas" role="tabpanel">
-                <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="tab-pane fade show active" id="rutas" role="tabpanel">                <div class="d-flex justify-content-between align-items-center mb-3">
                     <h3>Mis Rutas</h3>
-                    <a href="<?= BASE_URL ?>ruta/crear" class="btn btn-primary">
+                    <a href="<?= BASE_URL ?>ruta/crear" class="btn btn-modern-primary">
                         <i class="fas fa-plus mr-2"></i>Nueva Ruta
                     </a>
                 </div>
@@ -62,11 +62,10 @@
                     <div class="alert alert-info">
                         Aún no has creado ninguna ruta. ¡Crea tu primera ruta con el botón de arriba!
                     </div>
-                <?php else: ?>
-                    <div class="row">
+                <?php else: ?>                    <div class="row">
                         <?php foreach ($rutas as $ruta): ?>
                             <div class="col-md-6 col-lg-4 mb-4">
-                                <div class="card h-100">
+                                <div class="card modern-card h-100">
                                     <div class="card-body">
                                         <h5 class="card-title"><?= htmlspecialchars($ruta['nombre']) ?></h5>
                                         <p class="card-text">
@@ -81,14 +80,13 @@
                                         </div>
                                     </div>
                                     <div class="card-footer bg-transparent">
-                                        <a href="<?= BASE_URL ?>ruta/detalle&id=<?= $ruta['id'] ?>" class="btn btn-sm btn-outline-primary">Ver Detalles</a>
-                                        <a href="<?= BASE_URL ?>ruta/editar&id=<?= $ruta['id'] ?>" class="btn btn-sm btn-outline-secondary">
+                                        <a href="<?= BASE_URL ?>ruta/detalle&id=<?= $ruta['id'] ?>" class="btn btn-sm btn-modern-primary">Ver Detalles</a>
+                                        <a href="<?= BASE_URL ?>ruta/editar&id=<?= $ruta['id'] ?>" class="btn btn-sm btn-modern-secondary">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <a href="<?= BASE_URL ?>ruta/eliminar&id=<?= $ruta['id'] ?>" class="btn btn-sm btn-outline-danger" 
-                                           onclick="return confirm('¿Estás seguro de que deseas eliminar esta ruta?')">
+                                        <button onclick="deleteRoute(<?= $ruta['id'] ?>)" class="btn btn-sm btn-modern-danger">
                                             <i class="fas fa-trash-alt"></i>
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -130,10 +128,24 @@
                 <?php endif; ?>
             </div>
         </div>
-    <?php else: ?>
-        <div class="alert alert-danger">
+    <?php else: ?>        <div class="alert alert-danger">
             No has iniciado sesión.
             <a href="<?= BASE_URL ?>usuario/login" class="alert-link">Inicia sesión</a> para ver tu perfil.
         </div>
     <?php endif; ?>
 </div>
+
+<script>
+function deleteRoute(routeId) {
+    confirmAction(
+        'Eliminar Ruta',
+        '¿Estás seguro de que quieres eliminar esta ruta? Esta acción no se puede deshacer.',
+        'Sí, eliminar',
+        () => {
+            showLoadingAlert('Eliminando ruta...');
+            window.location.href = `<?= BASE_URL ?>ruta/eliminar&id=${routeId}`;
+        },
+        'question'
+    );
+}
+</script>
