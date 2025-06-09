@@ -1,0 +1,74 @@
+@use '../abstracts/variables' as *;
+
+// === FORM STYLES ===
+$form-padding: var(--space-3);
+$form-border-radius: var(--radius-md);
+$form-border-color: var(--neutral-300);
+$form-focus-border-color: var(--primary-500);
+$form-error-color: var(--error-500);
+
+.form-group {
+    margin-bottom: var(--space-4);
+}
+
+.form-label {
+    display: block;
+    margin-bottom: var(--space-2);
+    font-weight: 500;
+    color: var(--neutral-700);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    width: 100%;
+    padding: $form-padding;
+    border: 1px solid $form-border-color;
+    border-radius: $form-border-radius;
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    transition: border-color 0.2s ease;
+
+    &:focus {
+        border-color: $form-focus-border-color;
+        outline: none;
+    }
+}
+
+.form-error {
+    color: $form-error-color;
+    font-size: var(--font-size-sm);
+    margin-top: var(--space-2);
+}
+
+.form-group-modern {
+  margin-bottom: $spacing-6;
+
+  label {
+    display: block;
+    color: $color-neutral-900;
+    font-weight: $font-weight-medium;
+    margin-bottom: $spacing-2;
+  }
+
+  .form-control-modern {
+    width: 100%;
+    padding: $spacing-3 $spacing-4;
+    border: 2px solid $color-neutral-200;
+    border-radius: $border-radius-base;
+    font-size: $font-size-base;
+    color: $color-neutral-900;
+    background-color: $color-white;
+    transition: border-color $transition-fast;
+
+    &:focus {
+      outline: none;
+      border-color: $color-info;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    &::placeholder {
+      color: $color-neutral-400;
+    }
+  }
+}

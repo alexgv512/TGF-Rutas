@@ -1,0 +1,33 @@
+@use '../abstracts/variables' as *;
+
+// === ALERT STYLES ===
+.alert {
+  border: none;
+  border-radius: $border-radius-base;
+  padding: $spacing-4 $spacing-6;
+  margin-bottom: $spacing-4;
+
+  &.alert-info {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: $color-info;
+    border-left: 4px solid $color-info;
+  }
+
+  &.alert-success {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: $color-success;
+    border-left: 4px solid $color-success;
+  }
+
+  &.alert-danger {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: $color-error;
+    border-left: 4px solid $color-error;
+  }
+
+  &.alert-warning {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: $color-warning;
+    border-left: 4px solid $color-warning;
+  }
+}

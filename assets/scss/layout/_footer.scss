@@ -1,0 +1,41 @@
+@use '../abstracts/variables' as *;
+
+// === FOOTER STYLES ===
+footer {
+  background-color: $color-neutral-900 !important;
+  color: $color-white;
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+
+  h5 {
+    color: $color-white;
+    margin-bottom: $spacing-4;
+  }
+
+  .text-muted {
+    color: $color-neutral-400 !important;
+  }
+
+  .text-light {
+    color: $color-neutral-200 !important;
+  }
+
+  a {
+    color: $color-neutral-200;
+
+    &:hover {
+      color: $color-white;
+      text-decoration: none;
+    }
+  }
+
+  .social-icons a {
+    color: $color-neutral-300;
+    font-size: $font-size-lg;
+
+    &:hover {
+      color: $color-white;
+    }
+  }
+}

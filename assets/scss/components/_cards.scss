@@ -1,0 +1,188 @@
+@use '../abstracts/variables' as *;
+@use 'sass:color';
+
+// This file contains styles for card components, including layout and hover effects.
+
+// === MODERN CARD SYSTEM ===
+.modern-card,
+.route-card {
+  position: relative;
+  background-color: $color-white;
+  border: 1px solid $color-neutral-200;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-sm;
+  transition: all $transition-normal;
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-2px);
+  }
+}
+
+.card-header-modern {
+  background-color: $color-neutral-50;
+  border-bottom: 1px solid $color-neutral-200;
+  padding: $spacing-4 $spacing-6;
+
+  h5 {
+    color: $color-neutral-900;
+    font-weight: $font-weight-semibold;
+    margin: 0;
+  }
+}
+
+.card-body {
+  padding: $spacing-6;
+  color: $color-neutral-700;
+}
+
+// === ROUTE CARDS ===
+.route-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .route-card-image {
+    height: 200px;
+    background-color: $color-neutral-100;
+    position: relative;
+    overflow: hidden;
+
+    .route-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: $color-neutral-400;
+      font-size: $font-size-3xl;
+    }
+  }
+
+  .route-card-content {
+    padding: $spacing-6;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .route-card-title {
+    color: $color-neutral-900;
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-3;
+  }
+
+  .route-card-description {
+    color: $color-neutral-600;
+    margin-bottom: $spacing-4;
+    flex-grow: 1;
+  }
+
+  .route-card-meta {
+    display: flex;
+    gap: $spacing-2;
+    margin-bottom: $spacing-4;
+
+    .route-difficulty,
+    .route-distance {
+      background-color: $color-neutral-100;
+      color: $color-neutral-700;
+      padding: $spacing-1 $spacing-3;
+      border-radius: $border-radius-full;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+    }
+  }
+
+  .route-card-rating {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+    margin-bottom: $spacing-4;
+
+    .fa-star {
+      color: $color-warning;
+    }
+
+    .rating-value {
+      color: $color-neutral-600;
+      font-weight: $font-weight-medium;
+    }
+  }
+}
+
+// === PROFILE CARDS ===
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid $color-white;
+  box-shadow: $shadow-md;
+}
+
+// === FORM CARDS ===
+.form-group-modern {
+  margin-bottom: $spacing-6;
+
+  label {
+    display: block;
+    color: $color-neutral-900;
+    font-weight: $font-weight-medium;
+    margin-bottom: $spacing-2;
+  }
+
+  .form-control-modern {
+    width: 100%;
+    padding: $spacing-3 $spacing-4;
+    border: 2px solid $color-neutral-200;
+    border-radius: $border-radius-base;
+    font-size: $font-size-base;
+    color: $color-neutral-900;
+    background-color: $color-white;
+    transition: border-color $transition-fast;
+
+    &:focus {
+      outline: none;
+      border-color: $color-info;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    &::placeholder {
+      color: $color-neutral-400;
+    }
+  }
+}
+
+// === ALERT IMPROVEMENTS ===
+.alert {
+  border: none;
+  border-radius: $border-radius-base;
+  padding: $spacing-4 $spacing-6;
+  margin-bottom: $spacing-4;
+
+  &.alert-info {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: $color-info;
+    border-left: 4px solid $color-info;
+  }
+
+  &.alert-success {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: $color-success;
+    border-left: 4px solid $color-success;
+  }
+
+  &.alert-danger {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: $color-error;
+    border-left: 4px solid $color-error;
+  }
+
+  &.alert-warning {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: $color-warning;
+    border-left: 4px solid $color-warning;
+  }
+}

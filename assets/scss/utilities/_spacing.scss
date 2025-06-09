@@ -1,0 +1,14 @@
+// This file contains utility classes for spacing (margins and paddings).
+
+
+@use '../abstracts/variables' as *;
+
+// === SPACING UTILITIES ===
+.mt-4 { margin-top: $spacing-4; }
+.mb-4 { margin-bottom: $spacing-4; }
+.mt-5 { margin-top: $spacing-5; }
+.mb-5 { margin-bottom: $spacing-5; }
+
+.pt-4 { padding-top: $spacing-4; }
+.pb-4 { padding-bottom: $spacing-4; }
+.py-4 { padding-top: $spacing-4; padding-bottom: $spacing-4; }

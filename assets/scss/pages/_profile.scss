@@ -1,0 +1,51 @@
+@use '../abstracts/variables' as *;
+
+// === PROFILE PAGE STYLES ===
+.profile-page {
+  padding: $spacing-8 0;
+}
+
+.profile-header {
+  background-color: $color-white;
+  padding: $spacing-8;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-sm;
+  margin-bottom: $spacing-8;
+  position: relative;
+  z-index: 2;
+
+  h2 {
+    color: $color-neutral-900;
+    margin-bottom: $spacing-3;
+  }
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid $color-white;
+  box-shadow: $shadow-md;
+}
+
+.nav-tabs {
+  border-bottom: 2px solid $color-neutral-200;
+
+  .nav-link {
+    color: $color-neutral-600;
+    border: none;
+    border-bottom: 2px solid transparent;
+
+    &.active {
+      color: $color-neutral-900;
+      border-bottom-color: $color-primary;
+      background-color: transparent;
+    }
+
+    &:hover {
+      color: $color-neutral-900;
+      border-color: transparent;
+    }
+  }
+}

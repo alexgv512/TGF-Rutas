@@ -1,0 +1,71 @@
+// This file defines styles for dark mode themes.
+
+@use 'sass:color';
+@use '../abstracts/variables' as *;
+
+$background-color: #1c1917;
+$text-color: #f5f5f4;
+$link-color: #a855f7;
+$link-hover-color: #9333ea;
+
+body {
+    background-color: $background-color;
+    color: $text-color;
+}
+
+a {
+    color: $link-color;
+
+    &:hover {
+        color: $link-hover-color;
+    }
+}
+
+.navbar {
+    background-color: color.adjust($background-color, $lightness: -5%);
+}
+
+.card {
+    background-color: color.adjust($background-color, $lightness: -10%);
+    color: $text-color;
+
+    &:hover {
+        background-color: color.adjust($background-color, $lightness: -15%);
+    }
+}
+
+.btn {
+    background-color: $link-color;
+    color: $text-color;
+
+    &:hover {
+        background-color: $link-hover-color;
+    }
+}
+
+.btn-primary {
+    background-color: color.adjust($background-color, $lightness: -15%);
+
+    &:hover {
+        background-color: color.adjust($link-color, $lightness: -10%);
+    }
+}
+
+.alert {
+    background-color: color.adjust($background-color, $lightness: -15%);
+    color: $text-color;
+
+    &.alert-success {
+        background-color: color.adjust($link-color, $lightness: -10%);
+    }
+
+    &.alert-error {
+        background-color: color.adjust($link-hover-color, $lightness: -10%);
+    }
+}
+
+// === DARK MODE THEME ===
+[data-theme="dark"] {
+  background-color: $color-neutral-900;
+  color: $color-neutral-100;
+}

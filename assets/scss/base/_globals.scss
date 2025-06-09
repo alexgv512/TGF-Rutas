@@ -1,0 +1,114 @@
+@use '../abstracts/variables' as *;
+
+// === GLOBAL STYLES ===
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-normal;
+  color: $color-neutral-900;
+  background-color: $color-white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// === IMPROVED CONTRAST ===
+.container {
+  position: relative;
+  z-index: 1;
+  background-color: $color-white;
+}
+
+// Text contrast improvements
+.text-muted {
+  color: $color-neutral-600 !important;
+}
+
+.text-light {
+  color: $color-neutral-100 !important;
+}
+
+// === LAYOUT FIXES ===
+main {
+  position: relative;
+  z-index: 1;
+  min-height: calc(100vh - 140px);
+  background-color: $color-white;
+}
+
+.homepage-main {
+  padding: 0;
+  min-height: 100vh;
+}
+
+// === OVERLAY PREVENTION ===
+.profile-header {
+  position: relative;
+  z-index: 2;
+  background-color: $color-white;
+  padding: $spacing-6;
+  margin-bottom: $spacing-6;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-sm;
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  background-color: $color-white;
+  border: 1px solid $color-neutral-200;
+  box-shadow: $shadow-sm;
+}
+
+// === NAVIGATION FIXES ===
+.navbar {
+  position: relative;
+  z-index: $z-index-sticky;
+  background-color: $color-white !important;
+  border-bottom: 1px solid $color-neutral-200;
+  box-shadow: $shadow-sm;
+}
+
+.dropdown-menu {
+  z-index: $z-index-dropdown;
+  background-color: $color-white;
+  border: 1px solid $color-neutral-200;
+  box-shadow: $shadow-lg;
+}
+
+// === FOOTER FIXES ===
+footer {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  background-color: $color-neutral-900 !important;
+  color: $color-white;
+}
+
+// === RESPONSIVE IMAGES ===
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// === FOCUS STATES ===
+*:focus {
+  outline: 2px solid $color-info;
+  outline-offset: 2px;
+}
+
+// === SMOOTH TRANSITIONS ===
+* {
+  transition: color $transition-fast, background-color $transition-fast, border-color $transition-fast;
+}

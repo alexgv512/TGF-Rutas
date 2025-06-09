@@ -1,0 +1,10 @@
+@use '../abstracts/variables' as *;
+
+// === TEXT UTILITIES ===
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-dark { color: $color-neutral-900 !important; }
+.text-muted { color: $color-neutral-600 !important; }
+.text-light { color: $color-neutral-100 !important; }

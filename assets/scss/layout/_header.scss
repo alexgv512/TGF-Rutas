@@ -1,0 +1,36 @@
+@use '../abstracts/variables' as *;
+
+// === HEADER STYLES ===
+header {
+  position: relative;
+  z-index: $z-index-sticky;
+}
+
+.navbar {
+  background-color: $color-white !important;
+  border-bottom: 1px solid $color-neutral-200;
+  box-shadow: $shadow-sm;
+  padding: $spacing-4 0;
+
+  .navbar-brand {
+    font-weight: $font-weight-bold;
+    color: $color-neutral-900 !important;
+    font-size: $font-size-xl;
+  }
+
+  .nav-link {
+    color: $color-neutral-600 !important;
+    font-weight: $font-weight-medium;
+    padding: $spacing-2 $spacing-4;
+
+    &:hover {
+      color: $color-neutral-900 !important;
+    }
+  }
+
+  .dropdown-menu {
+    border: 1px solid $color-neutral-200;
+    box-shadow: $shadow-lg;
+    border-radius: $border-radius-base;
+  }
+}

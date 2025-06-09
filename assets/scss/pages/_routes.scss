@@ -1,0 +1,19 @@
+@use '../abstracts/variables' as *;
+
+// === ROUTES PAGE STYLES ===
+.routes-page {
+  padding: $spacing-8 0;
+}
+
+.route-filters {
+  background-color: $color-neutral-50;
+  padding: $spacing-6;
+  border-radius: $border-radius-base;
+  margin-bottom: $spacing-8;
+}
+
+.route-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $spacing-6;
+}
